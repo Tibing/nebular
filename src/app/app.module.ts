@@ -17,7 +17,6 @@ import {
   NbLayoutModule,
   NbMenuModule,
   NbRouteTabsetModule,
-  NbSearchModule,
   NbSidebarModule,
   NbTabsetModule,
   NbThemeModule,
@@ -74,8 +73,6 @@ import { NbContextMenuTestComponent } from './context-menu-test/context-menu-tes
 import { routes } from './app.routes';
 
 import { NbCheckboxTestComponent } from './checkbox-test/checkbox-test.component';
-import { NbSearchTestComponent } from './search-test/search-test.component';
-import { NbSearchTestCustomizedComponent } from './search-test/search-test-customized.component';
 import { NbFormsTestComponent } from './forms-test/forms-test.component';
 
 import { NbCardTestComponent } from './card-test/card-test.component';
@@ -111,8 +108,6 @@ const NB_TEST_COMPONENTS = [
   NbMenuItem4Component,
   NbUserTestComponent,
   NbThemeChangeTestComponent,
-  NbSearchTestComponent,
-  NbSearchTestCustomizedComponent,
   NbBootstrapTestComponent,
   NbThemeDynamicTestComponent,
   NbThemeBreakpointTestComponent,
@@ -137,7 +132,6 @@ const NB_TEST_COMPONENTS = [
     NbSidebarModule.forRoot(),
     NbTabsetModule,
     NbUserModule,
-    NbSearchModule,
     NbActionsModule,
     NbPopoverModule,
     NbContextMenuModule,

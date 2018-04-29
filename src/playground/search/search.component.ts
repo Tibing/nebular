@@ -65,7 +65,7 @@ import { NbSearchService } from '@nebular/theme';
     </nb-layout>
   `,
 })
-export class NbSearchTestComponent implements OnInit {
+export class NbSearchComponent implements OnInit {
 
   constructor(private searchService: NbSearchService) {
   }

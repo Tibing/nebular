@@ -6,8 +6,10 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NbPopoverExampleComponent } from './popover';
 import { NbPlaygroundComponent } from './playground.component';
+
+import { NbPopoverExampleComponent } from './popover';
+import { NbSearchComponent, NbSearchCustomizedComponent } from './search';
 
 
 export const routes: Routes = [
@@ -15,7 +17,18 @@ export const routes: Routes = [
     path: '',
     component: NbPlaygroundComponent,
     children: [
-      { path: 'popover/popover-example.component', component: NbPopoverExampleComponent },
+      {
+        path: 'popover/popover-example.component',
+        component: NbPopoverExampleComponent,
+      },
+      {
+        path: 'search',
+        component: NbSearchComponent,
+      },
+      {
+        path: 'search-2',
+        component: NbSearchCustomizedComponent,
+      },
     ],
   },
 ];
