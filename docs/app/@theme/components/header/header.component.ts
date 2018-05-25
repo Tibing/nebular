@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
-import { NgdVersionService } from '../../services';
+import { NgdPackageService } from '../../services';
 
 @Component({
   selector: 'ngd-header',
@@ -22,8 +22,8 @@ import { NgdVersionService } from '../../services';
 export class NgdHeaderComponent {
   currentVersion: string;
 
-  constructor(versionService: NgdVersionService) {
-    this.currentVersion = versionService.getNebularVersion();
+  constructor(packageService: NgdPackageService) {
+    this.currentVersion = packageService.getNebularVersion();
   }
 
   mainMenu: NbMenuItem[] = [

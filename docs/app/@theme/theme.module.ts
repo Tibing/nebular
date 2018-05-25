@@ -29,6 +29,7 @@ import {
   NgdPageTabsComponent,
   NgdColorSwatchDirective,
   NgdDescriptionDirective,
+  NgdStackblitzOpenerDirective,
 } from './components/';
 
 import {
@@ -39,7 +40,7 @@ import {
   NgdCodeLoaderService,
   NgdIframeCommunicatorService,
   NgdStylesService,
-  NgdVersionService,
+  NgdPackageService,
   NgdTocStateService,
   NgdPaginationService,
 } from './services';
@@ -66,6 +67,7 @@ import {
     NgdPageTabsComponent,
     NgdColorSwatchDirective,
     NgdDescriptionDirective,
+    NgdStackblitzOpenerDirective,
   ],
   exports: [
     CommonModule,
@@ -88,6 +90,7 @@ import {
     NgdPageTabsComponent,
     NgdColorSwatchDirective,
     NgdDescriptionDirective,
+    NgdStackblitzOpenerDirective,
   ],
   providers: [
     NgdHighlightService,
@@ -97,7 +100,7 @@ import {
     NgdCodeLoaderService,
     NgdIframeCommunicatorService,
     NgdStylesService,
-    NgdVersionService,
+    NgdPackageService,
     NgdTocStateService,
     NgdPaginationService,
   ],
