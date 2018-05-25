@@ -26,7 +26,8 @@ import { NbPlaygroundRoutingModule } from './playground-routing.module';
 import { NbPlaygroundBaseComponent } from './playground-base.component';
 import { NbPlaygroundLayoutComponent } from './playground-layout.component';
 
-import { NbDynamicToAddComponent } from '../app/dynamic.component';
+import { NbDynamicToAddComponent } from './dynamic.component';
+
 import { NbPopoverShowcaseComponent } from './popover/popover-showcase.component';
 import { NbPopoverTemplateRefComponent } from './popover/popover-template-ref.component';
 import { NbPopoverCustomComponentComponent } from './popover/popover-custom-component.component';
