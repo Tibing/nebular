@@ -5,10 +5,16 @@ import { forkJoin as observableForkJoin, Observable } from 'rxjs';
 import { NgdCodeLoaderService } from './code-loader.service';
 import { map } from 'rxjs/operators';
 import { NgdPackageService } from './package.service';
+import { NgdStackblitzTemplateService } from './stackblitz-template';
 
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
-const dependencies = [
+const TEMPLATE_FILES = [
+  'index.html',
+  'main.ts',
+];
+
+const EXTERNAL_DEPENDENCIES = [
   '@angular/animations',
   '@angular/common',
   '@angular/compiler',
@@ -18,11 +24,17 @@ const dependencies = [
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
   '@angular/router',
+  'nebular-icons',
   'core-js',
   'rxjs',
   'zone.js',
-  'hammerjs',
-  'moment',
+  'bootstrap',
+];
+
+const NEBULAR_DEPENDENCIES = [
+  '@nebular/theme',
+  '@nebular/auth',
+  '@nebular/security',
 ];
 
 @Injectable()
@@ -33,13 +45,15 @@ export class NgdStackblitzService {
   constructor(@Inject(NB_DOCUMENT) private document,
               private http: HttpClient,
               private codeLoader: NgdCodeLoaderService,
-              private packageService: NgdPackageService) {
+              private packageService: NgdPackageService,
+              private templateService: NgdStackblitzTemplateService) {
   }
 
-  load({ id, files, name }): Observable<null> {
+  load({ id, files, name, withLayout }): Observable<null> {
     this.createForm(id);
     this.loadMetadata(name);
-    return this.loadFiles(files);
+    this.loadTemplate(id, withLayout);
+    return this.loadFiles(id, files);
   }
 
   submit() {
@@ -60,11 +74,24 @@ export class NgdStackblitzService {
     this.appendInput('dependencies', JSON.stringify(this.getDependencies()));
   }
 
-  private loadFiles(paths: string[]): Observable<null> {
-    return observableForkJoin(paths.map(path => this.loadFile(path)));
+  private loadFiles(id: string, paths: string[]): Observable<null> {
+    return observableForkJoin(
+      ...this.loadExamples(paths),
+    );
   }
 
-  private loadFile(path: string): Observable<null> {
+  private loadExamples(paths: string[]): Observable<void>[] {
+    return paths.map(path => this.loadFile(path));
+  }
+
+  private loadTemplate(id: string, withLayout: boolean) {
+    const { index, main, cli } = this.templateService.createTemplate(id, withLayout);
+    this.appendFile('index.html', index);
+    this.appendFile('main.ts', main);
+    this.appendFile('.angular-cli.json', cli);
+  }
+
+  private loadFile(path: string): Observable<void> {
     return this.codeLoader.load(path)
       .pipe(map(file => this.appendFile(path, file)));
   }
@@ -90,6 +117,26 @@ export class NgdStackblitzService {
   }
 
   private getDependencies() {
-    return dependencies.reduce((deps, dep) => ({ ...deps, [dep]: this.packageService.detDependencyVersion(dep) }), {});
+    return {
+      ...this.getExternalDependencies(),
+      ...this.getNebularDependencies(),
+      // TODO maybe we can load them automatically? It's peers of bootstrap
+      'jquery': '1.9.1',
+      'popper.js': '^1.12.9',
+    };
+  }
+
+  private getExternalDependencies() {
+    return EXTERNAL_DEPENDENCIES.reduce((deps, dep) => ({
+      ...deps,
+      [dep]: this.packageService.detDependencyVersion(dep),
+    }), {});
+  }
+
+  private getNebularDependencies() {
+    return NEBULAR_DEPENDENCIES.reduce((deps, dep) => ({
+      ...deps,
+      [dep]: this.packageService.getNebularVersion(),
+    }), {});
   }
 }

@@ -1,13 +1,11 @@
 import { dest, src, task } from 'gulp';
 import { accessSync, readFileSync, writeFileSync } from 'fs';
-import { DOCS_OUTPUT, EXTENSIONS, PLAYGROUND_ROOT } from '../config';
+import { DOCS_OUTPUT, EXAMPLES_DEST, EXAMPLES_SRC, EXTENSIONS, PLAYGROUND_ROOT, WITH_LAYOUT } from '../config';
 import { join } from 'path';
 
 const del = require('del');
 const replace = require('gulp-replace');
 
-const EXAMPLES_SRC = './src/playground/**/*.*';
-const EXAMPLES_DEST = './docs/assets/examples';
 
 task('copy-examples', () => {
   del.sync(EXAMPLES_DEST);
@@ -67,8 +65,13 @@ function createNode(tag, files, id = tag.content.id) {
       ...tag.content,
       files,
       id,
+      withLayout: isWithLayout(id),
     },
   };
+}
+
+function isWithLayout(id: string): boolean {
+  return WITH_LAYOUT.some(prefix => id.startsWith(prefix));
 }
 
 function validate(cls) {

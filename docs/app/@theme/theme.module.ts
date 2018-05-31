@@ -44,6 +44,7 @@ import {
   NgdTocStateService,
   NgdPaginationService,
 } from './services';
+import { NgdStackblitzTemplateService } from './services/stackblitz-template';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import {
     NgdPackageService,
     NgdTocStateService,
     NgdPaginationService,
+    NgdStackblitzTemplateService,
   ],
 })
 export class NgdThemeModule {
