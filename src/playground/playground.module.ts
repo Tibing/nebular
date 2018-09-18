@@ -248,6 +248,11 @@ import { NbDatepickerShowcaseComponent } from './datepicker/datepicker-showcase.
 import { NbDatepickerFormsComponent } from './datepicker/datepicker-forms.component';
 import { NbDatepickerValidationComponent } from './datepicker/datepicker-validation.component';
 import { NbRangepickerShowcaseComponent } from './datepicker/rangepicker-showcase.component';
+import {
+  NbCalendarCustomRangeDayCellComponent,
+  NbDraggableRangeComponent,
+  NbOdexPocComponent,
+} from './odex-poc/odex-poc';
 
 export const NB_MODULES = [
   NbCardModule,
@@ -488,6 +493,9 @@ export const NB_EXAMPLE_COMPONENTS = [
   NbDatepickerFormsComponent,
   NbDatepickerValidationComponent,
   NbRangepickerShowcaseComponent,
+  NbOdexPocComponent,
+  NbCalendarCustomRangeDayCellComponent,
+  NbDraggableRangeComponent,
 ];
 
 @NgModule({
@@ -512,6 +520,7 @@ export const NB_EXAMPLE_COMPONENTS = [
     NbShowcaseDialogComponent,
     NbBackdropClickDialogComponent,
     NbFormComponent,
+    NbDraggableRangeComponent,
   ],
 })
 export class NbPlaygroundModule {

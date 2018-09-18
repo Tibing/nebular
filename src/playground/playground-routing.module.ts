@@ -195,6 +195,7 @@ import { NbSelectCleanComponent } from './select/select-clean.component';
 import { NbWindowShowcaseComponent } from './window/window-showcase.component';
 import { NbTemplateWindowComponent } from './window/template-window.component';
 import { NbWindowsBackdropComponent } from './window/windows-backdrop.component';
+import { NbOdexPocComponent } from './odex-poc/odex-poc';
 import { NbDatepickerShowcaseComponent } from './datepicker/datepicker-showcase.component';
 import { NbDatepickerFormsComponent } from './datepicker/datepicker-forms.component';
 import { NbDatepickerValidationComponent } from './datepicker/datepicker-validation.component';
@@ -206,6 +207,10 @@ export const routes: Routes = [
     path: '',
     component: NbPlaygroundLayoutComponent,
     children: [
+      {
+        path: 'odex',
+        component: NbOdexPocComponent,
+      },
       {
         path: 'popover',
         children: [
