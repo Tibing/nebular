@@ -1,0 +1,14 @@
+<nb-layout>
+  <nb-layout-column>
+
+    <cdk-drop orientation="horizontal" (dropped)="onDropped($event)" style="display: flex">
+      <div cdkDrag *ngFor="let item of items" class="item">
+        <nb-card>
+          <nb-card-header>{{ item }}</nb-card-header>
+        </nb-card>
+        <div *cdkDragPlaceholder style="border: 2px solid red"></div>
+      </div>
+    </cdk-drop>
+
+  </nb-layout-column>
+</nb-layout>

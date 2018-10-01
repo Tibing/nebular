@@ -1218,7 +1218,12 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild([
+    {
+      path: '',
+      loadChildren: './poc-dnd/poc-dnd.module#NbPocDNDModule',
+    },
+  ])],
   exports: [RouterModule],
 })
 export class NbPlaygroundRoutingModule {
