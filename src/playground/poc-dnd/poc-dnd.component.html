@@ -1,13 +1,20 @@
 <nb-layout>
   <nb-layout-column>
 
-    <cdk-drop orientation="horizontal" (dropped)="onDropped($event)" style="display: flex">
-      <div cdkDrag *ngFor="let item of items" class="item">
-        <nb-card>
-          <nb-card-header>{{ item }}</nb-card-header>
+    <button nbButton (click)="addItem()">Add Item</button>
+
+    <cdk-drop orientation="horizontal" (dropped)="onDropped($event)">
+        <nb-card cdkDrag *ngFor="let item of items" >
+          <nb-card-header>
+            {{ item }}
+          </nb-card-header>
+          <nb-card-footer>
+            <i class="nb-close"
+               (mousedown)="startResize($event)"
+            ></i>
+          </nb-card-footer>
+          <div *cdkDragPlaceholder style="border: 2px solid red"></div>
         </nb-card>
-        <div *cdkDragPlaceholder style="border: 2px solid red"></div>
-      </div>
     </cdk-drop>
 
   </nb-layout-column>

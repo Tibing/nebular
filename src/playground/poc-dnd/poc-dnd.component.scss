@@ -6,11 +6,32 @@
   padding: 0;
 }
 
-.item {
-  width: 200px;
-  padding: 1.5rem;
+cdk-drop {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  nb-card {
-    margin: 0;
+nb-card {
+  width: 200px;
+  margin: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.nb-justifying {
+    transition: all 0.3s;
+  }
+}
+
+nb-card-footer {
+  display: flex;
+  justify-content: flex-end;
+
+  i {
+    cursor: se-resize;
+    position: relative;
+    bottom: -1.25rem;
+    right: -1.25rem;
   }
 }
