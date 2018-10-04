@@ -118,11 +118,7 @@
       true,
       "eval",
       "fit",
-      "fdescribe",
-      {
-        "name": "$",
-        "message": "please don't"
-      }
+      "fdescribe"
     ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,

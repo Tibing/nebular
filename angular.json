@@ -27,9 +27,13 @@
             ],
             "styles": [
               "node_modules/nebular-icons/scss/nebular-icons.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/dsmorse-gridster/dist/jquery.dsmorse-gridster.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/dsmorse-gridster/dist/jquery.dsmorse-gridster.min.js"
+            ]
           },
           "configurations": {
             "production": {

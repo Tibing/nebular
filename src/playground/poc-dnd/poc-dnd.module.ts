@@ -7,7 +7,7 @@
 
 import { NgModule } from '@angular/core';
 
-import { NbPocDNDComponent } from './poc-dnd.component';
+import { NbGridComponent, NbPocDNDComponent, NbWidgetDirective } from './poc-dnd.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NbCardModule, NbLayoutModule } from '@nebular/theme';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -32,9 +32,7 @@ export class NbPocDNDRoutingModule {
     NbCardModule,
     DragDropModule,
   ],
-  exports: [],
-  declarations: [NbPocDNDComponent],
-  providers: [],
+  declarations: [NbWidgetDirective, NbPocDNDComponent, NbGridComponent],
 })
 export class NbPocDNDModule {
 }
