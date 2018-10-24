@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { NbOverlayContainer } from '../overlay/mapping';
 
 
+function throwNoOverlayContainerProvidedError() {
+  throw new Error(`No container provided for overlays. Did you wrap your application in nb-layout?`);
+}
+
 /**
  * Provides nb-layout as overlay container.
  * Container has to be cleared when layout destroys.
@@ -24,6 +28,14 @@ export class NbOverlayContainerAdapter extends NbOverlayContainer {
   }
 
   protected _createContainer(): void {
+    if (!this.container) {
+      throwNoOverlayContainerProvidedError();
+    }
+
+    this.instantiateOverlayContainer();
+  }
+
+  protected instantiateOverlayContainer() {
     const container = this._document.createElement('div');
 
     container.classList.add('cdk-overlay-container');
